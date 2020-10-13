@@ -48,8 +48,8 @@ export const reduceTransformer: DataTransformerInfo<ReduceTransformerOptions> = 
         const processed: DataFrame[] = [];
         // Collapse all matching fields into a single row
         if (options.mode === ReduceTransformerMode.ReduceFields) {
+          const fields: Field[] = [];
           for (const series of data) {
-            const fields: Field[] = [];
             for (const field of series.fields) {
               if (matcher(field, series, data)) {
                 const results = reduceField({
@@ -63,25 +63,33 @@ export const reduceTransformer: DataTransformerInfo<ReduceTransformerOptions> = 
                     values: new ArrayVector([value]),
                   };
                   copy.state = undefined;
+                  if (!copy.labels) {
+                    copy.labels = {};
+                  }
                   if (reducers.length > 1) {
-                    if (!copy.labels) {
-                      copy.labels = {};
-                    }
                     copy.labels['reducer'] = fieldReducers.get(reducer).name;
+                  }
+                  // Move the name to the field
+                  if (series.name) {
+                    if (copy.name === 'Value' || copy.name === 'value') {
+                      copy.name = series.name;
+                    } else {
+                      copy.labels['series'] = series.name;
+                    }
                   }
                   fields.push(copy);
                 }
               }
             }
-            if (fields.length) {
-              processed.push({
-                ...series,
-                fields,
-                length: 1, // always one row
-              });
-            }
           }
 
+          // Reduce all fields into a single frame
+          if (fields.length) {
+            processed.push({
+              fields,
+              length: 1, // always one row
+            });
+          }
           return processed;
         }
 
