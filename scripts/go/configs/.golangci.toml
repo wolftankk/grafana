@@ -8,6 +8,9 @@ min-confidence = 3
 min-len = 5
 min-occurrences = 5
 
+[linters-settings.unused]
+check-exported = true
+
 [linters]
 disable-all = true
 enable = [
