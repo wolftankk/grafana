@@ -299,11 +299,6 @@ func (fn *FeishuNotifier) genBody(evalContext *alerting.EvalContext) ([]byte, er
 		return nil, err
 	}
 
-	ruleURL, err := evalContext.GetRuleURL()
-	if err != nil {
-		return nil, err
-	}
-
 	title := evalContext.GetNotificationTitle()
 
 	contents := make([]interface{}, 0)
@@ -327,6 +322,7 @@ func (fn *FeishuNotifier) genBody(evalContext *alerting.EvalContext) ([]byte, er
 		ImageKey: imageID,
 	})
 
+	ruleURL, _ := evalContext.GetRuleURL()
 	if len(ruleURL) > 0 {
 		contents = append(contents, feishuLinkContent{
 			Tag:  "a",
