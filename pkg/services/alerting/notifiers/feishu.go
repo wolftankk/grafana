@@ -9,7 +9,10 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
+	"path/filepath"
 	"time"
+
+	"github.com/grafana/grafana/pkg/setting"
 
 	"github.com/grafana/grafana/pkg/bus"
 
@@ -286,6 +289,9 @@ type feishuPost struct {
 }
 
 func (fn *FeishuNotifier) genBody(evalContext *alerting.EvalContext) ([]byte, error) {
+	if evalContext.ImageOnDiskPath == "" {
+		evalContext.ImageOnDiskPath = filepath.Join(setting.HomePath, "public/img/mixed_styles.png")
+	}
 	imageID, err := fn.uploadImage(evalContext.ImageOnDiskPath)
 
 	if err != nil {
