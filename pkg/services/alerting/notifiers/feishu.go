@@ -33,6 +33,22 @@ func init() {
 		Heading:     "Sends notifications to feishu/lark.",
 		Description: "Feishu API settings",
 		Factory:     newFeishuNotifier,
+		OptionsTemplate: `
+			<h3 class="page-heading">Telegram API settings</h3>
+			<div class="gf-form">
+        		<span class="gf-form-label width-10">Url</span>
+        		<input type="text" required class="gf-form-input max-width-70" ng-model="ctrl.model.settings.url" placeholder="https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxxxxxxxxxxxxx"></input>
+      		</div>
+			<div class="gf-form">
+        		<span class="gf-form-label width-9">App ID</span>
+        		<input type="text" required class="gf-form-input" ng-model="ctrl.model.settings.appId"></input>
+				<info-popover mode="right-absolute">only for uploading image</info-popover>
+      		</div>
+			<div class="gf-form">
+        		<span class="gf-form-label width-9">App Secret</span>
+        		<input type="text" required class="gf-form-input" ng-model="ctrl.model.settings.appSecret"></input>
+      		</div>
+		`,
 		Options: []alerting.NotifierOption{
 			{
 				Label:        "Url",
