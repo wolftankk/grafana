@@ -13,6 +13,7 @@ require (
 	github.com/aws/aws-sdk-go v1.29.20
 	github.com/beevik/etree v1.1.0 // indirect
 	github.com/benbjohnson/clock v0.0.0-20161215174838-7dc76406b6d3
+	github.com/bluele/gcache v0.0.0-20190518031135-bc40bd653833
 	github.com/bradfitz/gomemcache v0.0.0-20190329173943-551aad21a668
 	github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd // indirect
 	github.com/crewjam/saml v0.0.0-20191031171751-c42136edf9b1
