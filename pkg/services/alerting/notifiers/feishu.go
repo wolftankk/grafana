@@ -36,7 +36,7 @@ func init() {
 		OptionsTemplate: `
 			<h3 class="page-heading">Telegram API settings</h3>
 			<div class="gf-form">
-        		<span class="gf-form-label width-10">Url</span>
+        		<span class="gf-form-label width-9">Url</span>
         		<input type="text" required class="gf-form-input max-width-70" ng-model="ctrl.model.settings.url" placeholder="https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxxxxxxxxxxxxx"></input>
       		</div>
 			<div class="gf-form">
@@ -289,6 +289,7 @@ func (fn *FeishuNotifier) genBody(evalContext *alerting.EvalContext) ([]byte, er
 	imageID, err := fn.uploadImage(evalContext.ImageOnDiskPath)
 
 	if err != nil {
+		fn.log.Error("failed upload image", "error", err)
 		return nil, err
 	}
 
