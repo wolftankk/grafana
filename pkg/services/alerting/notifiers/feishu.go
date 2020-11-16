@@ -289,7 +289,7 @@ func (fn *FeishuNotifier) genBody(evalContext *alerting.EvalContext) ([]byte, er
 	imageID, err := fn.uploadImage(evalContext.ImageOnDiskPath)
 
 	if err != nil {
-		fn.log.Error("failed upload image", "error", err)
+		fn.log.Error("failed upload image", "error", err, "path", evalContext.ImageOnDiskPath, "url", evalContext.ImagePublicURL)
 		return nil, err
 	}
 
