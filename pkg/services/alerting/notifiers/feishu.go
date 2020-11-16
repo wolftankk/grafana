@@ -244,6 +244,7 @@ func (fn *FeishuNotifier) Notify(evalContext *alerting.EvalContext) error {
 	//build message
 	body, err := fn.genBody(evalContext)
 	if err != nil {
+		fn.log.Error("gen feishu body faield.", "error", err)
 		return err
 	}
 
@@ -304,31 +305,46 @@ func (fn *FeishuNotifier) genBody(evalContext *alerting.EvalContext) ([]byte, er
 	contents := make([]interface{}, 0)
 
 	if len(evalContext.Rule.Message) > 0 {
-		contents = append(contents, feishuTextContent{
+		subContents := make([]interface{}, 0)
+		subContents = append(subContents, feishuTextContent{
 			Tag:  "text",
 			Text: evalContext.Rule.Message,
 		})
+
+		contents = append(contents, subContents)
 	}
 
-	for _, evt := range evalContext.EvalMatches {
-		contents = append(contents, feishuTextContent{
-			Tag:  "text",
-			Text: fmt.Sprintf("%s: %s", evt.Metric, evt.Value),
+	if len(evalContext.EvalMatches) > 0 {
+		subContents := make([]interface{}, 0)
+		for _, evt := range evalContext.EvalMatches {
+			subContents = append(subContents, feishuTextContent{
+				Tag:  "text",
+				Text: fmt.Sprintf("%s: %s", evt.Metric, evt.Value),
+			})
+		}
+		contents = append(contents, subContents)
+	}
+
+	if len(imageID) > 0 {
+		subContents := make([]interface{}, 0)
+		subContents = append(subContents, feishuImageContent{
+			Tag:      "img",
+			ImageKey: imageID,
 		})
+		contents = append(contents, subContents)
 	}
-
-	contents = append(contents, feishuImageContent{
-		Tag:      "image",
-		ImageKey: imageID,
-	})
 
 	ruleURL, _ := evalContext.GetRuleURL()
 	if len(ruleURL) > 0 {
-		contents = append(contents, feishuLinkContent{
+		subContents := make([]interface{}, 0)
+
+		subContents = append(subContents, feishuLinkContent{
 			Tag:  "a",
 			Text: string(evalContext.GetNewState()),
 			Link: ruleURL,
 		})
+
+		contents = append(contents, subContents)
 	}
 
 	post := feishuContent{
