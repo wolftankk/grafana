@@ -315,14 +315,14 @@ func (fn *FeishuNotifier) genBody(evalContext *alerting.EvalContext) ([]byte, er
 	}
 
 	if len(evalContext.EvalMatches) > 0 {
-		subContents := make([]interface{}, 0)
 		for _, evt := range evalContext.EvalMatches {
+			subContents := make([]interface{}, 0)
 			subContents = append(subContents, feishuTextContent{
 				Tag:  "text",
 				Text: fmt.Sprintf("%s: %s", evt.Metric, evt.Value),
 			})
+			contents = append(contents, subContents)
 		}
-		contents = append(contents, subContents)
 	}
 
 	if len(imageID) > 0 {
