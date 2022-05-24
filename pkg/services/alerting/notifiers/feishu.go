@@ -12,15 +12,12 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/grafana/grafana/pkg/setting"
-
-	"github.com/grafana/grafana/pkg/bus"
-
 	"github.com/bluele/gcache"
-
+	"github.com/grafana/grafana/pkg/bus"
 	"github.com/grafana/grafana/pkg/infra/log"
 	"github.com/grafana/grafana/pkg/models"
 	"github.com/grafana/grafana/pkg/services/alerting"
+	"github.com/grafana/grafana/pkg/setting"
 )
 
 var (
@@ -36,22 +33,6 @@ func init() {
 		Heading:     "Sends notifications to feishu/lark.",
 		Description: "Feishu API settings",
 		Factory:     newFeishuNotifier,
-		OptionsTemplate: `
-			<h3 class="page-heading">Telegram API settings</h3>
-			<div class="gf-form">
-        		<span class="gf-form-label width-9">Url</span>
-        		<input type="text" required class="gf-form-input max-width-70" ng-model="ctrl.model.settings.url" placeholder="https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxxxxxxxxxxxxx"></input>
-      		</div>
-			<div class="gf-form">
-        		<span class="gf-form-label width-9">App ID</span>
-        		<input type="text" required class="gf-form-input" ng-model="ctrl.model.settings.appId"></input>
-				<info-popover mode="right-absolute">only for uploading image</info-popover>
-      		</div>
-			<div class="gf-form">
-        		<span class="gf-form-label width-9">App Secret</span>
-        		<input type="text" required class="gf-form-input" ng-model="ctrl.model.settings.appSecret"></input>
-      		</div>
-		`,
 		Options: []alerting.NotifierOption{
 			{
 				Label:        "Url",
@@ -106,7 +87,7 @@ type FeishuNotifier struct {
 	log         log.Logger
 }
 
-func newFeishuNotifier(model *models.AlertNotification) (alerting.Notifier, error) {
+func newFeishuNotifier(model *models.AlertNotification, _ alerting.GetDecryptedValueFn) (alerting.Notifier, error) {
 	if model.Settings == nil {
 		return nil, alerting.ValidationError{Reason: "No Settings Supplied"}
 	}
@@ -254,7 +235,7 @@ func (fn *FeishuNotifier) Notify(evalContext *alerting.EvalContext) error {
 		HttpMethod: "POST",
 	}
 
-	if err := bus.DispatchCtx(evalContext.Ctx, cmd); err != nil {
+	if err := bus.Dispatch(evalContext.Ctx, cmd); err != nil {
 		fn.log.Error("Failed to send feishu", "error", err, "webhook", fn.Name)
 		return err
 	}
