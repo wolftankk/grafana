@@ -113,7 +113,7 @@ require (
 	google.golang.org/grpc v1.45.0
 	google.golang.org/protobuf v1.28.0
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
-	gopkg.in/ini.v1 v1.66.2
+	gopkg.in/ini.v1 v1.66.4
 	gopkg.in/ldap.v3 v3.1.0
 	gopkg.in/mail.v2 v2.3.1
 	gopkg.in/square/go-jose.v2 v2.5.1
@@ -231,7 +231,7 @@ require (
 	go.uber.org/atomic v1.9.0
 	go.uber.org/goleak v1.1.12 // indirect
 	golang.org/x/sys v0.0.0-20220422013727-9388b58f7150 // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/text v0.3.7
 	golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20220421151946-72621c1f0bd3
