@@ -17,7 +17,7 @@ require (
 	cloud.google.com/go/storage v1.21.0
 	cuelang.org/go v0.4.3
 	github.com/Azure/azure-sdk-for-go v59.3.0+incompatible
-	github.com/Azure/go-autorest/autorest v0.11.22
+	github.com/Azure/go-autorest/autorest v0.11.27
 	github.com/BurntSushi/toml v0.3.1
 	github.com/Masterminds/semver v1.5.0
 	github.com/VividCortex/mysqlerr v0.0.0-20170204212430-6c6b55f8796f
@@ -231,7 +231,7 @@ require (
 	go.uber.org/atomic v1.9.0
 	go.uber.org/goleak v1.1.12 // indirect
 	golang.org/x/sys v0.0.0-20220422013727-9388b58f7150 // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/text v0.3.7
 	golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20220421151946-72621c1f0bd3
@@ -242,7 +242,7 @@ require (
 	cloud.google.com/go/kms v1.4.0
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v0.13.2
 	github.com/Azure/azure-sdk-for-go/sdk/keyvault/azkeys v0.4.0
-	github.com/Azure/go-autorest/autorest/adal v0.9.17
+	github.com/Azure/go-autorest/autorest/adal v0.9.18
 	github.com/armon/go-radix v1.0.0
 	github.com/blugelabs/bluge v0.1.9
 	github.com/golang-migrate/migrate/v4 v4.7.0
