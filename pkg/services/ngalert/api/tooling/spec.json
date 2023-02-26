@@ -2946,7 +2946,8 @@
             " threema",
             " victorops",
             " webhook",
-            " wecom"
+            " wecom",
+            " feishu"
           ],
           "example": "webhook"
         },
