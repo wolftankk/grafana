@@ -155,6 +155,68 @@ func GetAvailableNotifiers() []*NotifierPlugin {
 			},
 		},
 		{
+			Type:        "feishu",
+			Name:        "Feishu",
+			Description: "Sends notifications to feishu/lark.",
+			Heading:     "Feishu API  settings",
+			Options: []NotifierOption{
+				{
+					Label:        "URL",
+					Element:      ElementTypeInput,
+					InputType:    InputTypeText,
+					Placeholder:  "https://open.feishu.cn/open-apis/bot/v2/hook/xxxxxxxxxxxxxxxxx",
+					PropertyName: "url",
+					Required:     true,
+				},
+				{
+					Label:        "App Id",
+					Element:      ElementTypeInput,
+					InputType:    InputTypeText,
+					PropertyName: "appId",
+					Required:     true,
+					Description:  "only for uploading image",
+				},
+				{
+					Label:        "App Secret",
+					Element:      ElementTypeInput,
+					InputType:    InputTypePassword,
+					PropertyName: "appSecret",
+					Required:     true,
+				},
+				{
+					Label:        "Message type",
+					Element:      ElementTypeSelect,
+					PropertyName: "msgType",
+					Required:     true,
+					SelectOptions: []SelectOption{
+						{
+							Label: "Post",
+							Value: "post",
+						},
+						{
+							Label: "Interactive",
+							Value: "interactive",
+						},
+					},
+				},
+				{ // New in 9.3.
+					Label:        "Title",
+					Element:      ElementTypeInput,
+					InputType:    InputTypeText,
+					Description:  "Templated title of the message",
+					Placeholder:  alertingTemplates.DefaultMessageTitleEmbed,
+					PropertyName: "title",
+				},
+				{ // New in 8.0.
+					Label:        "Message",
+					Element:      ElementTypeTextArea,
+					Description:  "Custom Feishu message. You can use template variables.",
+					Placeholder:  alertingTemplates.DefaultMessageEmbed,
+					PropertyName: "message",
+				},
+			},
+		},
+		{
 			Type:        "kafka",
 			Name:        "Kafka REST Proxy",
 			Description: "Sends notifications to Kafka Rest Proxy",
