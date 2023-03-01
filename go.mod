@@ -81,7 +81,7 @@ require (
 	github.com/json-iterator/go v1.1.12
 	github.com/jung-kurt/gofpdf v1.16.2
 	github.com/lib/pq v1.10.7
-	github.com/linkedin/goavro/v2 v2.10.0
+	github.com/linkedin/goavro/v2 v2.12.0
 	github.com/m3db/prometheus_remote_client_golang v0.4.4
 	github.com/magefile/mage v1.14.0
 	github.com/mattn/go-isatty v0.0.16
@@ -131,7 +131,7 @@ require (
 	gopkg.in/square/go-jose.v2 v2.5.1
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1
-	xorm.io/builder v0.3.6
+	xorm.io/builder v0.3.6 // indirect
 	xorm.io/core v0.7.3
 	xorm.io/xorm v0.8.2
 )
