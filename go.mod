@@ -131,7 +131,7 @@ require (
 	gopkg.in/square/go-jose.v2 v2.5.1
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1
-	xorm.io/builder v0.3.6
+	xorm.io/builder v0.3.6 // indirect
 	xorm.io/core v0.7.3
 	xorm.io/xorm v0.8.2
 )
@@ -287,6 +287,7 @@ require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/apapsch/go-jsonmerge/v2 v2.0.0 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
+	github.com/bluele/gcache v0.0.2 // indirect
 	github.com/bmatcuk/doublestar v1.1.1 // indirect
 	github.com/buildkite/yaml v2.1.0+incompatible // indirect
 	github.com/containerd/containerd v1.6.8 // indirect
@@ -426,4 +427,4 @@ replace google.golang.org/grpc => google.golang.org/grpc v1.45.0
 
 replace google.golang.org/genproto => google.golang.org/genproto v0.0.0-20220421151946-72621c1f0bd3
 
-replace github.com/grafana/alerting => github.com/wolftankk/alerting latest
+replace github.com/grafana/alerting => github.com/wolftankk/alerting v0.0.0-20230226162006-2177b11c1e07
