@@ -427,4 +427,4 @@ replace google.golang.org/grpc => google.golang.org/grpc v1.45.0
 
 replace google.golang.org/genproto => google.golang.org/genproto v0.0.0-20220421151946-72621c1f0bd3
 
-replace github.com/grafana/alerting => github.com/wolftankk/alerting v0.0.0-20230226162006-2177b11c1e07
+replace github.com/grafana/alerting => github.com/wolftankk/alerting v0.0.0-20230301144249-fc2489551c10

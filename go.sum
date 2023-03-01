@@ -2272,8 +2272,8 @@ github.com/willf/bitset v1.1.11-0.20200630133818-d5bec3311243/go.mod h1:RjeCKbqT
 github.com/willf/bitset v1.1.11/go.mod h1:83CECat5yLh5zVOf4P1ErAgKA5UDvKtgyUABdr3+MjI=
 github.com/wk8/go-ordered-map v1.0.0 h1:BV7z+2PaK8LTSd/mWgY12HyMAo5CEgkHqbkVq2thqr8=
 github.com/wk8/go-ordered-map v1.0.0/go.mod h1:9ZIbRunKbuvfPKyBP1SIKLcXNlv74YCOZ3t3VTS6gRk=
-github.com/wolftankk/alerting v0.0.0-20230226162006-2177b11c1e07 h1:j7Z0Zcghn3OBEh9x1CNO0Z7NrvGt3H90/DQY4K/87RA=
-github.com/wolftankk/alerting v0.0.0-20230226162006-2177b11c1e07/go.mod h1:6IL4DAvzWnprBOgg4/+xU5qPtYp16rKsfAiyEH3aFOw=
+github.com/wolftankk/alerting v0.0.0-20230301144249-fc2489551c10 h1:fHrw+xXsVNaczQdrpubdvhVFSkNR7Ead4LW13gwZK6Y=
+github.com/wolftankk/alerting v0.0.0-20230301144249-fc2489551c10/go.mod h1:6IL4DAvzWnprBOgg4/+xU5qPtYp16rKsfAiyEH3aFOw=
 github.com/xanzy/go-gitlab v0.15.0/go.mod h1:8zdQa/ri1dfn8eS3Ir1SyfvOKlw7WBJ8DVThkpGiXrs=
 github.com/xanzy/ssh-agent v0.3.0 h1:wUMzuKtKilRgBAD1sUb8gOwwRr2FGoBVumcjoOACClI=
 github.com/xanzy/ssh-agent v0.3.0/go.mod h1:3s9xbODqPuuhK9JV1R321M/FlMZSBvE5aY6eAcqrDh0=
