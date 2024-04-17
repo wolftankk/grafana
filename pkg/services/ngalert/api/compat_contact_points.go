@@ -324,6 +324,11 @@ func parseIntegration(json jsoniter.API, result *definitions.ContactPoint, recei
 		if err = json.Unmarshal(data, &integration); err == nil {
 			result.Webex = append(result.Webex, integration)
 		}
+	case "feishu":
+		integration := definitions.FeishuIntegration{DisableResolveMessage: disable}
+		if err = json.Unmarshal(data, &integration); err == nil {
+			result.Feishu = append(result.Feishu, integration)
+		}
 	default:
 		err = fmt.Errorf("integration %s is not supported", receiverType)
 	}

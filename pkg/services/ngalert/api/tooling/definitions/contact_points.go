@@ -33,6 +33,17 @@ type DingdingIntegration struct {
 	Message     *string `json:"message,omitempty" yaml:"message,omitempty" hcl:"message"`
 }
 
+type FeishuIntegration struct {
+	DisableResolveMessage *bool `json:"-" yaml:"-" hcl:"disable_resolve_message"`
+
+	WebhookURL   *string `json:"url" yaml:"url" hcl:"url"`
+	AppID        *string `json:"appId,omitempty" yaml:"appId,omitempty" hcl:"app_id,omitempty"`
+	AppSecret    Secret  `json:"appSecret,omitempty" yaml:"appSecret,omitempty" hcl:"app_secret,omitempty"`
+	Title        string  `json:"title,omitempty" yaml:"title,omitempty" hcl:"title,omitempty"`
+	Message      string  `json:"message,omitempty" yaml:"message,omitempty" hcl:"message,omitempty"`
+	MentionUsers *string `json:"mentionUsers,omitempty" yaml:"mentionUsers,omitempty" hcl:"mention_users"`
+}
+
 type DiscordIntegration struct {
 	DisableResolveMessage *bool `json:"-" yaml:"-" hcl:"disable_resolve_message"`
 
@@ -290,4 +301,5 @@ type ContactPoint struct {
 	Webhook      []WebhookIntegration      `json:"webhook" yaml:"webhook" hcl:"webhook,block"`
 	Wecom        []WecomIntegration        `json:"wecom" yaml:"wecom" hcl:"wecom,block"`
 	Webex        []WebexIntegration        `json:"webex" yaml:"webex" hcl:"webex,block"`
+	Feishu       []FeishuIntegration       `json:"feishu" yaml:"feishu" hcl:"feishu,block"`
 }
