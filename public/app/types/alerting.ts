@@ -49,6 +49,7 @@ export type GrafanaNotifierType =
   | 'telegram'
   | 'opsgenie'
   | 'dingding'
+  | 'feishu'
   | 'webhook'
   | 'victorops'
   | 'pushover'
