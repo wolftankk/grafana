@@ -191,7 +191,7 @@ func GetAvailableNotifiers() []*NotifierPlugin {
 					Label:        "Mention Users",
 					Element:      ElementTypeInput,
 					InputType:    InputTypeText,
-					Description:  "Mention one or more users (comma separated) when notifying in a channel, by ID (you can copy this from the user's Feishu profile)",
+					Description:  "Mention one or more users (comma separated) when notifying in a channel, by emails (you can copy this from the user's Feishu email) or all (for all)",
 					PropertyName: "mentionUsers",
 				},
 			},
