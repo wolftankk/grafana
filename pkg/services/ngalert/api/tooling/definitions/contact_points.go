@@ -33,6 +33,18 @@ type DingdingIntegration struct {
 	Message     *string `json:"message,omitempty" yaml:"message,omitempty" hcl:"message"`
 }
 
+type FeishuIntegration struct {
+	DisableResolveMessage *bool `json:"-" yaml:"-" hcl:"disable_resolve_message"`
+
+	URL           string  `json:"url" yaml:"url" hcl:"url"`
+	AppID         Secret  `json:"appId" yaml:"appId" hcl:"app_id"`
+	AppSecret     Secret  `json:"appSecret" yaml:"appSecret" hcl:"app_secret"`
+	Title         *string `json:"title,omitempty" yaml:"title,omitempty" hcl:"title"`
+	Message       *string `json:"message,omitempty" yaml:"message,omitempty" hcl:"message"`
+	MentionUsers  *string `json:"mentionUsers,omitempty" yaml:"mentionUsers,omitempty" hcl:"mention_users"`
+	MentionGroups *string `json:"mentionGroups,omitempty" yaml:"mentionGroups,omitempty" hcl:"mention_groups"`
+}
+
 type DiscordIntegration struct {
 	DisableResolveMessage *bool `json:"-" yaml:"-" hcl:"disable_resolve_message"`
 
@@ -405,6 +417,7 @@ type ContactPoint struct {
 	Dingding     []DingdingIntegration     `json:"dingding" yaml:"dingding" hcl:"dingding,block"`
 	Discord      []DiscordIntegration      `json:"discord" yaml:"discord" hcl:"discord,block"`
 	Email        []EmailIntegration        `json:"email" yaml:"email" hcl:"email,block"`
+	Feishu       []FeishuIntegration       `json:"feishu" yaml:"feishu" hcl:"feishu,block"`
 	Googlechat   []GooglechatIntegration   `json:"googlechat" yaml:"googlechat" hcl:"googlechat,block"`
 	Jira         []JiraIntegration         `json:"jira" yaml:"jira" hcl:"jira,block"`
 	Kafka        []KafkaIntegration        `json:"kafka" yaml:"kafka" hcl:"kafka,block"`

@@ -710,6 +710,7 @@ require cloud.google.com/go/discoveryengine v1.32.0 // @grafana/grafana-search-a
 
 require (
 	github.com/efficientgo/core v1.0.0-rc.3 // indirect
+	github.com/larksuite/oapi-sdk-go/v3 v3.4.0 // indirect
 	github.com/thanos-io/objstore v0.0.0-20250115091151-a54d0f04b42a // indirect
 	github.com/tinylib/msgp v1.6.3 // indirect
 )
@@ -730,3 +731,5 @@ replace (
 // This was retracted, but seems to be known by the Go module proxy, and is
 // otherwise pulled in as a transitive dependency.
 exclude k8s.io/client-go v12.0.0+incompatible
+
+replace github.com/grafana/alerting => github.com/wolftankk/alerting v0.0.0-20261009115919-b1ee8f7c99d5

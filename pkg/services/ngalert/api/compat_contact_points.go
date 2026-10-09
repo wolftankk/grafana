@@ -52,7 +52,7 @@ func ContactPointToContactPointExport(cp definitions.ContactPoint) (alertingMode
 		len(cp.Pagerduty) + len(cp.OnCall) + len(cp.Pushover) + len(cp.Sensugo) +
 		len(cp.Sns) + len(cp.Slack) + len(cp.Teams) + len(cp.Telegram) +
 		len(cp.Threema) + len(cp.Victorops) + len(cp.Webhook) + len(cp.Wecom) +
-		len(cp.Webex) + len(cp.Mqtt)
+		len(cp.Webex) + len(cp.Mqtt) + len(cp.Feishu)
 
 	integration := make([]*alertingModels.IntegrationConfig, 0, contactPointsLength)
 
@@ -218,6 +218,13 @@ func ContactPointToContactPointExport(cp definitions.ContactPoint) (alertingMode
 		}
 		integration = append(integration, el)
 	}
+	for _, i := range cp.Feishu {
+		el, err := marshallIntegration(j, "feishu", i, i.DisableResolveMessage)
+		if err != nil {
+			errs = append(errs, err)
+		}
+		integration = append(integration, el)
+	}
 
 	if len(errs) > 0 {
 		return alertingModels.ReceiverConfig{}, errors.Join(errs...)
@@ -369,6 +376,11 @@ func parseIntegration(json jsoniter.API, result *definitions.ContactPoint, recei
 		integration := definitions.WebexIntegration{DisableResolveMessage: disable}
 		if err = json.Unmarshal(data, &integration); err == nil {
 			result.Webex = append(result.Webex, integration)
+		}
+	case "feishu":
+		integration := definitions.FeishuIntegration{DisableResolveMessage: disable}
+		if err = json.Unmarshal(data, &integration); err == nil {
+			result.Feishu = append(result.Feishu, integration)
 		}
 	default:
 		err = fmt.Errorf("integration %s is not supported", receiverType)
